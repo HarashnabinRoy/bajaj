@@ -18,24 +18,36 @@ app.post('/bfhl', (req, res) => {
           alpha.push(item);
         }
       });
-      const highestAlphabet = alpha.reduce((highest, current) => {
-        const lowerCurrent = current.toLowerCase();
-        const lowerHighest = highest.toLowerCase();
+    // let highest = []
+    // const highestAlphabet = alpha.reduce((highest, current) => {
+    //     const lowerCurrent = current.toLowerCase();
+    //     const lowerHighest = highest.toLowerCase();
       
-        if (lowerCurrent > lowerHighest) {
-          return current;
-        } else {
-          return highest;
+    //     if (lowerCurrent > lowerHighest) {
+    //       return current;
+    //     } else {
+    //       return highest;
+    //     }
+    //   }, '');
+
+    let largest = [];
+    let char=alpha[0];
+
+    for (let i = 1; i < alpha.length; i++) {
+        char = alpha[i];
+        if (/[a-zA-Z]/.test(char) && char > largest) {
+        largest.push(char)
         }
-      }, '');
+    }
+
     const response = {
       is_sucess: 'true',
-      user_id:'harashnabin_roy_18042002',
+      user_id:'Harashnabin_Roy_18042002',
       college_email:'hr2306@srmist.edu.in',
       roll_number:'RA2011003010321',
       numbers:numb,
       alphabets:alpha,
-      highestAlphabets:highestAlphabet
+      HighestAlphabets:largest
     };
   
     res.json(response);
