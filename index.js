@@ -19,7 +19,6 @@ app.post('/bfhl', (req, res) => {
         }
       });
       const highestAlphabet = alpha.reduce((highest, current) => {
-        // Convert the characters to lowercase (or uppercase) for case-insensitive comparison
         const lowerCurrent = current.toLowerCase();
         const lowerHighest = highest.toLowerCase();
       
