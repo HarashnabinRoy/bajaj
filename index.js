@@ -18,13 +18,25 @@ app.post('/bfhl', (req, res) => {
           alpha.push(item);
         }
       });
+      const highestAlphabet = alpha.reduce((highest, current) => {
+        // Convert the characters to lowercase (or uppercase) for case-insensitive comparison
+        const lowerCurrent = current.toLowerCase();
+        const lowerHighest = highest.toLowerCase();
+      
+        if (lowerCurrent > lowerHighest) {
+          return current;
+        } else {
+          return highest;
+        }
+      }, '');
     const response = {
       is_sucess: 'true',
       user_id:'harashnabin_roy_18042002',
       college_email:'hr2306@srmist.edu.in',
       roll_number:'RA2011003010321',
       numbers:numb,
-      alphabets:alpha
+      alphabets:alpha,
+      highestAlphabets:highestAlphabet
     };
   
     res.json(response);
